@@ -113,6 +113,5 @@ If you encounter issues:
 2. Clear Nuxt cache if needed (`rm -rf .nuxt` then `npm run dev`)
 3. Check that your Node.js version meets the requirements
 
-傻子
 ## Learn More
 Check out the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more about Nuxt and its features.
