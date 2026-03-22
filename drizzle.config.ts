@@ -9,6 +9,6 @@ export default defineConfig({
   casing: "snake_case",
   dialect: "turso",
   dbCredentials: {
-    url: env.DB_FILE_NAME,
+    url: env.TURSO_DATABASE_URL,
   },
 });

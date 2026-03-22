@@ -1,5 +1,5 @@
 import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
-import { createInsertSchema } from "drizzle-orm/zod";
+import { createInsertSchema } from "drizzle-zod";
 
 export const tasks = sqliteTable("tasks", {
   id: int().primaryKey({ autoIncrement: true }),

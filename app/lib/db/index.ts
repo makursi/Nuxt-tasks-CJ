@@ -1,6 +1,6 @@
 // 连接数据库, 导出数据库实例
 import "dotenv/config";
-import { drizzle } from "drizzle-orm/tursodatabase/database";
+import { drizzle } from "drizzle-orm/libsql";
 
 // 导入解析后的环境变量
 import env from "../env";
@@ -10,7 +10,7 @@ import * as schema from "./schema";
 
 const db = drizzle({
   connection: {
-    url: env.DB_FILE_NAME,
+    url: env.TURSO_DATABASE_URL,
   },
   casing: "snake_case",
   schema,
