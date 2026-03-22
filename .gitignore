@@ -25,3 +25,7 @@ logs
 # ai skills
 ./trae
 ./agent
+
+
+# Database
+tasks_db.db
