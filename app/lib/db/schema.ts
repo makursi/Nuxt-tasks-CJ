@@ -5,6 +5,7 @@ export const tasks = sqliteTable("tasks", {
   id: int().primaryKey({ autoIncrement: true }),
   title: text().notNull(),
   done: int({ mode: "boolean" }).notNull().default(false),
+  description: text(),
   createdAt: int().$defaultFn(() => Date.now()),
   updatedAt: int()
     .$defaultFn(() => Date.now())
@@ -13,6 +14,7 @@ export const tasks = sqliteTable("tasks", {
 
 export const InsertTasksSchema = createInsertSchema(tasks, {
   title: (field) => field.min(1).max(500),
+  description: (field) => field.min(1).max(500),
 }).omit({
   id: true,
   createdAt: true,

@@ -5,7 +5,10 @@ const { data: tasks, error, status } = await useFetch("/api/task");
 
 <template>
     <div class="container">
-        <article v-for="task in tasks" key="task.id"></article>
+        <article v-for="task in tasks" key="task.id">
+            <h2>{{ task.title }}</h2>
+            <p>{{ task.description }}</p>
+        </article>
     </div>
 </template>
 

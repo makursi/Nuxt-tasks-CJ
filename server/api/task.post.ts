@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
         event,
         createError({
           statusCode: 500,
-          statusMessage: "server error",
+          statusMessage: "Server error",
         }),
       );
     }

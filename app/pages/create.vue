@@ -15,6 +15,7 @@ const onSubmit = async () => {
 
     try {
         loading.value = true;
+
         await $fetch("/api/task", {
             method: "POST",
             body: {
@@ -22,6 +23,7 @@ const onSubmit = async () => {
                 description: task.value.description,
             },
         });
+        task.value = { title: "", description: "" };
     } catch (e) {
         console.error(e.statusMessage);
         const error = e as FetctError;
