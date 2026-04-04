@@ -20,6 +20,12 @@ const deleteTask = async (id:number)=>
             alert('删除任务失败,请稍后重试')
       }
 }
+
+
+//更新任务
+const updateTask = async (id:number)=>{
+    navigateTo(`/${id}`)
+}
 </script>
 
 <template>
@@ -27,13 +33,21 @@ const deleteTask = async (id:number)=>
         <article v-for="task in tasks" :key="task.id">
             <h2>{{ task.title }}</h2>
             <p>{{ task.description }}</p>
-            <b>
-                <button class="btn btn-primary size-10" @click="deleteTask(task.id)">
-                    删除任务
+            <div>
+                <button class="btn btn-primary" @click="deleteTask(task.id)">
+                    删除
                 </button>
-            </b>
+                <button class="btn btn-primary" @click="updateTask(task.id)">
+                    编辑
+                </button>
+            </div>
         </article>
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+button {
+     margin: 10px
+}
+ </style>

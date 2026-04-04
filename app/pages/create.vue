@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { FetchError } from "ofetch";
-const task = ref({
+interface task {
+     title:string,
+     description:string
+}
+ const task = ref<task>({
     title: "",
     description: "",
 });

@@ -12,6 +12,8 @@ export const tasks = sqliteTable("tasks", {
     .$onUpdate(() => Date.now()),
 });
 
+
+//DTO, 仅定义传输数据对象schema,降低前后端耦合性
 export const InsertTasksSchema = createInsertSchema(tasks, {
   title: (field) => field.min(1).max(500),
   description: (field) => field.min(1).max(500),
