@@ -9,7 +9,6 @@ const props = defineProps(["title", "description"]);
             <div>
                 <NuxtLink to="/">Show Tasks</NuxtLink>
             </div>
-
             <div>
                 <NuxtLink :to="{ name: 'create' }">Create Tasks</NuxtLink>
             </div>

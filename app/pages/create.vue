@@ -25,8 +25,7 @@ const onSubmit = async () => {
         });
         task.value = { title: "", description: "" };
     } catch (e) {
-        console.error(e.statusMessage);
-        const error = e as FetctError;
+        const error = e as FetchError;
         ErrorMessage.value = error.statusMessage || "a unknow error occured";
         loading.value = false;
     }
