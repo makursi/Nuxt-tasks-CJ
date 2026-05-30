@@ -12,8 +12,8 @@ export default defineEventHandler(async (event) => {
       return sendError(
         event,
         createError({
-          statusCode: 500,
-          statusMessage: "Server error",
+          statusCode: 400,
+          statusMessage: "Invalid input",
         }),
       );
     }

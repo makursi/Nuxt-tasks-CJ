@@ -1,53 +1,33 @@
 <script setup lang="ts">
-// 使用$fetch 获取数据
-const { data: tasks, error, status ,refresh} = await useFetch("/api/task");
+const { data: tasks, error, status } = await useFetch("/api/task");
 
-const deleteTask = async (id:number)=>
-{
-     try 
-     {
-         const result = await $fetch(`/api/${id}`,{
-             method:"DELETE"
-         })
-         refresh();
-         if(result){
-            alert("删除任务成功")
-         }
-    
-     }
-      catch(error){
-            console.error('删除任务失败:',error)
-            alert('删除任务失败,请稍后重试')
-      }
-}
-
-
-//更新任务
-const updateTask = async (id:number)=>{
-    navigateTo(`/${id}`)
-}
+const deleteTask = async (id: number) => {
+  try {
+    await $fetch(`/api/${id}`, { method: "DELETE" });
+    tasks.value = tasks.value?.filter((t: any) => t.id !== id);
+  } catch (e) {
+    console.error("Delete failed:", e);
+  }
+};
 </script>
 
 <template>
-    <div class="container">
-        <article v-for="task in tasks" :key="task.id">
-            <h2>{{ task.title }}</h2>
-            <p>{{ task.description }}</p>
-            <div>
-                <button class="btn btn-primary" @click="deleteTask(task.id)">
-                    删除
-                </button>
-                <button class="btn btn-primary" @click="updateTask(task.id)">
-                    编辑
-                </button>
-            </div>
-        </article>
-    </div>
+  <div class="container">
+    <p v-if="status === 'pending'">Loading...</p>
+    <p v-else-if="error">Failed to load tasks.</p>
+    <article v-for="task in tasks" :key="task.id">
+      <h2>{{ task.title }}</h2>
+      <p>{{ task.description }}</p>
+      <div style="display: flex; gap: 0.5rem;">
+        <NuxtLink :to="`/${task.id}`">
+          <button class="btn btn-primary">Edit</button>
+        </NuxtLink>
+        <button class="btn btn-primary" @click="deleteTask(task.id)">
+          Delete
+        </button>
+      </div>
+    </article>
+  </div>
 </template>
 
-<style scoped>
-
-button {
-     margin: 10px
-}
- </style>
+<style scoped></style>

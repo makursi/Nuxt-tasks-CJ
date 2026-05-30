@@ -29,3 +29,5 @@ logs
 
 # Database
 tasks_db.db
+tasks_db
+tasks_db-wal
